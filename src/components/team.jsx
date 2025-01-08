@@ -8,6 +8,15 @@ import React from 'react';
  import Yuvraj from './yuvraj.jpg';
  import Abhishek from './abhishek_team.jpg'
  import Tejas from './tejas.png'
+ import kushagra from './kushagra2.jpg'
+ import arsh from './arsh.jpg'
+ import dhruv from './dhruv.jpg'
+ import palak from './palak.jpg'
+ import pandey from './pandey.jpg'
+ import prajwal from './prajwal.jpg'
+ import pranav from './pranav.png'
+ import tanishka from './tanishka.jpg'
+ import nayan from './nayan.png'
 
 const TeamMember = ({ image, name, insta, linkedin }) => (
   <div style={{
@@ -133,8 +142,20 @@ const Team = () => {
 
       {/* Deltas Section */}
       <section style={sectionStyle}>
+       
         <h2 className='jersey-15-regular' style={subHeadingStyle}>DELTAS</h2>
-        {/* Add Delta team members here using the same TeamMember component */}
+        <div style={flexWrapStyle}>
+       <TeamMember image={kushagra} name ="Kushagra Kinra" insta="" linkedin="" />
+       <TeamMember image={arsh} name ="Arsh Goyal" insta="" linkedin="" />
+       <TeamMember image={dhruv} name ="Dhruv" insta="" linkedin="" />
+       <TeamMember image={palak} name ="Palak Mishra" insta="" linkedin="" />
+       <TeamMember image={pandey} name ="Priyanshu Pandey" insta="" linkedin="" />
+       <TeamMember image={kushagra} name ="Khushvendra Singh" insta="" linkedin="" />
+       <TeamMember image={nayan} name ="Khushvendra Singh" insta="" linkedin="" />
+       <TeamMember image={prajwal} name ="Prajwal Shenoy" insta="" linkedin="" />
+       <TeamMember image={pranav} name ="Pranav Nair" insta="" linkedin="" />
+       <TeamMember image={tanishka} name ="Tanishka Trivedi" insta="" linkedin="" />
+       </div>
       </section>
     </div>
   );

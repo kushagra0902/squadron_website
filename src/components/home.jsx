@@ -1,69 +1,72 @@
-import React from 'react';
-import Delta from './Delta_Squad.png';
-import { useState } from 'react';
-import logo from './SAAlogo.png'
+import React, { useState, useEffect, useRef } from 'react'
+import BIRDS from 'vanta/dist/vanta.waves.min'
+import Delta from './Delta_Squad.png'
+import cropped from './cropped(2).png'
 
 
-function Home() {
 
-  const [opa, setOpa]= useState(0.5)
-  const [opa2, setOpa2]= useState(0)
-  const [transY,setTransY]= useState(100)
-  const scrolling = (event)=>{
-    const {scrollTop, scrollHeight,clientHeight}=event.target
-    const scrollRatio=scrollTop/(scrollHeight-clientHeight)
-    setOpa(0.5-scrollRatio/2)
-    setOpa2(scrollRatio)
-   setTransY(Math.max(50,80-scrollRatio*100))
-  };
+const MyComponent = (props) => {
+  const home_top={
+    display:'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '70vh'
+  }
+  
+  const top_content={
+    display:'flex',
+    flexDirection:'column',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+  
+  
+  const aboutDiv={
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap:'wrap',
+    backgroundColor: 'white',
+    height:'25vh',
+  width:'100vh',
+  position: 'absolute',
+  
+  bottom:0 
+    
+  }
+  
+  const [vantaEffect, setVantaEffect] = useState(null)
+  const myRef = useRef(null)
+  useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(BIRDS({
+        el: myRef.current
+      }))
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy()
+    }
+  }, [vantaEffect])
   return (
-    <div style={{overflowY:'scroll',height:'100vh'}} onScroll={scrolling}>
-      <div style={{display:'flex', flexDirection:'column', justifyContent: 'center'}}>
-     
+  <div>
+  <div style={{display:'flex', flexDirection:'column', justifyContent: 'center', alignItems:'center', width: '100vw', height:'60vh', position:'fixed', left:0, top: '10vh'}} ref={myRef}>
+  <img src={cropped} alt="" style={{width: 250, position:'relative', bottom: 50 }}/>
 
-        <img src={Delta} alt="" 
-        style={{
-          position: 'fixed',
-          top:0,
-          left:0,
-          zIndex:-1,
-          opacity:opa,
-          height:100+'vh',
-          width:100+'vw',
-          
-        }}/>
-        <img src={logo} alt="" 
-        style={{
-          position: 'fixed',
-          top:0,
-          left:0,
-          zIndex:-1,
-          opacity:opa2,
-          height:100+'vh',
-          width:100+'vw',
-        }}
-        />
-        <div style={{marginTop: 150}}> 
-        <p style={{ textAlign: 'center', fontSize: 80, flexShrink:1}}>SAA</p>
-        <p style={{ textAlign: 'center',fontSize:20, flexShrink:1 }}>presents</p>
-        <p className='dancing-script' style={{ textAlign: 'center',color:'pink',fontSize:80, flexShrink:1}}>DELTA SQUADRON</p>
-        </div>
-      </div>
-     
-      <div style={{transform: `translateY(${transY}vh)`,transition:'transform 0.1s ease-out', minHeight:100+'vh'}}>
-            <p>
-                <span style={{textAlign:'center', fontSize: 40,marginBottom:100,color:'darkBlue'}}>Who Are We?</span>
-                <br></br>
-                <span className='playwrite-au-sa' style={{color:'#4a2775', fontSize:20}}>We are a group of passionate and enthusiastic students driven by curiosity and guided by capable mentors. Together, we explore diverse fields, strive for excellence, and foster meaningful connections with our alumni and seniors. Through their invaluable experiences and inspiring stories, we continue to learn, grow, and strengthen our bonds.
-                  <br/>
+    <p className='jersey-15-regular' style={{fontSize:50, position:'relative', bottom:20, color: ''}}>DELTA SQUADRON</p>
 
-                Welcome to our page! Here, you’ll discover everything about us, our journey, and the exciting events we have in store. Join us as we embark on this incredible adventure!
-                </span>
-            </p>
+  </div>
 
-        </div>
-    </div>
-  );
+  <div style={{backgroundColor:'#f0c7c5', height: '30vh', position: 'fixed', bottom: 0, width: '100vw', left: 0, display:'flex', flexDirection:'column'}}>
+<p className =" bebas-neue-regular" style={{color:'black', fontSize:30}}>WHO ARE WE?</p>
+
+<p className='dancing-script' style={{color: 'black', fontSize: 30}}>We are a group of passionate and enthusiastic students driven by curiosity and guided by capable mentors. Together, we explore diverse fields, strive for excellence, and foster meaningful connections with our alumni and seniors. Through their invaluable experiences and inspiring stories, we continue to learn, grow, and strengthen our bonds.
+</p>
+  </div>
+
+  </div>)
+
 }
 
-export default Home;
+export default MyComponent
