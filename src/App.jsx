@@ -7,8 +7,7 @@ import NavBar from './components/navMenu'
 import Events from './components/events'
 import { BrowserRouter } from 'react-router-dom'
 
-import React, { Component } from 'react';
-import { useEffect } from 'react'
+import React from 'react';
 function App() {
  
   return (
@@ -19,7 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/team' element={<Team />}></Route>
-        <Route path ='/events' element ={ <Events />}></Route>
+        <Route path ='/event' element ={ <Events />}></Route>
       </Routes>
       </BrowserRouter>
  </div>
